@@ -1,0 +1,149 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "eth": "https://etherscan.io/vocab#",
+    "op": "https://docs.optimism.etherscan.io/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Transaction": {
+      "@id": "schema:Action",
+      "@type": "@id"
+    },
+    "hash": {
+      "@id": "schema:identifier"
+    },
+    "blockNumber": {
+      "@id": "eth:blockNumber",
+      "@type": "xsd:integer"
+    },
+    "timeStamp": {
+      "@id": "schema:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "from": {
+      "@id": "schema:agent",
+      "@type": "@id"
+    },
+    "to": {
+      "@id": "schema:recipient",
+      "@type": "@id"
+    },
+    "value": {
+      "@id": "schema:amount"
+    },
+    "gas": {
+      "@id": "eth:gas"
+    },
+    "gasPrice": {
+      "@id": "eth:gasPrice"
+    },
+    "gasUsed": {
+      "@id": "eth:gasUsed"
+    },
+    "isError": {
+      "@id": "eth:isError",
+      "@type": "xsd:boolean"
+    },
+    "input": {
+      "@id": "eth:inputData"
+    },
+    "nonce": {
+      "@id": "eth:nonce",
+      "@type": "xsd:integer"
+    },
+    "confirmations": {
+      "@id": "eth:confirmations",
+      "@type": "xsd:integer"
+    },
+
+    "TokenTransfer": {
+      "@id": "schema:TransferAction",
+      "@type": "@id"
+    },
+    "tokenName": {
+      "@id": "schema:name"
+    },
+    "tokenSymbol": {
+      "@id": "schema:tickerSymbol"
+    },
+    "tokenDecimal": {
+      "@id": "eth:tokenDecimal",
+      "@type": "xsd:integer"
+    },
+    "contractAddress": {
+      "@id": "eth:contractAddress",
+      "@type": "@id"
+    },
+
+    "Block": {
+      "@id": "eth:Block",
+      "@type": "@id"
+    },
+    "blockMiner": {
+      "@id": "eth:miner",
+      "@type": "@id"
+    },
+    "blockReward": {
+      "@id": "eth:blockReward"
+    },
+
+    "Contract": {
+      "@id": "schema:SoftwareApplication",
+      "@type": "@id"
+    },
+    "ABI": {
+      "@id": "eth:abi"
+    },
+    "SourceCode": {
+      "@id": "schema:codeRepository"
+    },
+    "CompilerVersion": {
+      "@id": "eth:compilerVersion"
+    },
+    "ContractName": {
+      "@id": "schema:name"
+    },
+
+    "GasOracle": {
+      "@id": "op:GasOracle",
+      "@type": "@id"
+    },
+    "SafeGasPrice": {
+      "@id": "op:safeGasPrice"
+    },
+    "ProposeGasPrice": {
+      "@id": "op:proposedGasPrice"
+    },
+    "FastGasPrice": {
+      "@id": "op:fastGasPrice"
+    },
+    "suggestBaseFee": {
+      "@id": "op:suggestedBaseFee"
+    },
+
+    "OPMainnet": {
+      "@id": "op:OPMainnet",
+      "@type": "@id"
+    },
+    "chainId": {
+      "@id": "eth:chainId",
+      "@type": "xsd:integer"
+    },
+    "address": {
+      "@id": "schema:identifier"
+    },
+    "balance": {
+      "@id": "schema:amount"
+    },
+    "status": {
+      "@id": "schema:status"
+    },
+    "message": {
+      "@id": "schema:description"
+    },
+    "result": {
+      "@id": "schema:result"
+    }
+  }
+}

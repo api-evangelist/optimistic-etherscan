@@ -1,0 +1,56 @@
+name: Optimism Etherscan Domain Vocabulary
+provider: Optimism Etherscan
+providerId: optimistic-etherscan
+description: >-
+  Domain vocabulary for the Optimism Etherscan API surface covering OP Mainnet
+  (chain ID 10) blockchain data; terms sourced from API modules, actions, and
+  response schemas.
+terms:
+  - term: Accounts
+    description: Module covering address balances, transaction lists, and token holdings on OP Mainnet.
+  - term: Contracts
+    description: Module for smart contract ABI retrieval, source code, verification status, and creation info.
+  - term: Transactions
+    description: Module for transaction execution status, receipt status, and internal transaction traces.
+  - term: Blocks
+    description: Module for block rewards, block countdown estimates, and block-to-timestamp conversions.
+  - term: Tokens
+    description: Module for ERC-20 and ERC-721 token balances, total supply, and token holder lists.
+  - term: Stats
+    description: Module for OP Mainnet network statistics, OP token circulating supply, and gas oracle data.
+  - term: Geth Proxy
+    description: Ethereum JSON-RPC proxy module enabling direct node-level queries (eth_blockNumber, eth_getBalance, etc.).
+  - term: OP Mainnet
+    description: The Optimism Layer 2 network (chain ID 10) built on top of Ethereum using the OP Stack.
+  - term: EVM
+    description: Ethereum Virtual Machine — the execution environment shared by Ethereum and OP Mainnet.
+  - term: ERC-20
+    description: Fungible token standard on EVM chains; tracked via the tokentx and tokenbalance actions.
+  - term: ERC-721
+    description: Non-fungible token (NFT) standard on EVM chains; tracked via the tokennfttx action.
+  - term: Gas Oracle
+    description: Endpoint providing current safe, proposed, and fast gas price estimates in Gwei for OP Mainnet.
+  - term: Wei
+    description: Smallest denomination of ETH; 1 ETH = 10^18 wei. All value fields in the API use wei.
+  - term: Transaction Hash
+    description: 32-byte hex identifier uniquely identifying a transaction on OP Mainnet.
+  - term: Block Number
+    description: Sequential integer identifying a block on OP Mainnet.
+  - term: API Key
+    description: Authentication credential issued via optimistic.etherscan.io/myapikey; required for most endpoints.
+  - term: Rate Limit
+    description: Free tier allows 3 calls/second and 100,000 calls/day; paid plans start at $49/month.
+  - term: chainid
+    description: Numeric EVM chain identifier; use 10 for OP Mainnet with the Etherscan V2 unified endpoint.
+  - term: module
+    description: Top-level API grouping parameter selecting the functional area (account, contract, block, etc.).
+  - term: action
+    description: Sub-operation within a module (e.g. balance, txlist, getabi, getblockreward).
+  - term: Internal Transactions
+    description: Value transfers and calls initiated by smart contract execution; retrievable via txlistinternal.
+  - term: Source Code Verification
+    description: Process of submitting and validating smart contract source code against deployed bytecode.
+  - term: L2
+    description: Layer 2 — a scaling solution built on top of a base blockchain (L1); OP Mainnet is an Ethereum L2.
+  - term: Sepolia
+    description: Ethereum testnet; Optimism Sepolia (chain ID 11155420) is the OP Mainnet test environment.

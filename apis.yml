@@ -71,6 +71,12 @@ apis:
         type: TermsOfService
       - url: https://docs.optimism.etherscan.io/support/rate-limits
         type: RateLimits
+      - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/openapi/optimistic-etherscan-openapi.yml
+        type: OpenAPI
+      - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+        type: Vocabulary
+      - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+        type: JSONLDContext
 common:
   - url: https://optimistic.etherscan.io/
     type: Portal

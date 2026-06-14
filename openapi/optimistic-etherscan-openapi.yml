@@ -1,0 +1,445 @@
+openapi: 3.0.3
+info:
+  title: Optimism Etherscan API
+  description: >-
+    The Optimism Etherscan API provides developer access to OP Mainnet (chain ID 10)
+    blockchain data via REST endpoints. Modules cover accounts (balances, transaction
+    lists, token transfers), contracts (ABI, source code, verification), transactions
+    (status, receipts, internal txs), blocks (rewards, countdowns, timestamps), tokens
+    (ERC-20/ERC-721 balances, supply, holders), stats (OP supply, gas oracle, network
+    statistics), and a Geth proxy for raw JSON-RPC calls. Use chainid=10 with Etherscan
+    API V2 for unified multichain access, or the legacy endpoint at
+    https://api-optimistic.etherscan.io/api.
+  version: "2.0"
+  contact:
+    name: Optimism Etherscan Support
+    url: https://docs.optimism.etherscan.io/
+  termsOfService: https://etherscan.io/apiterms
+  license:
+    name: Etherscan API Terms
+    url: https://etherscan.io/apiterms
+servers:
+  - url: https://api-optimistic.etherscan.io/api
+    description: Optimism Etherscan legacy endpoint (OP Mainnet, chain ID 10)
+  - url: https://api.etherscan.io/v2/api
+    description: Etherscan unified V2 endpoint — add chainid=10 for OP Mainnet
+security:
+  - apiKeyAuth: []
+tags:
+  - name: Accounts
+    description: Address balances, transaction lists, and token holdings on OP Mainnet
+  - name: Contracts
+    description: Smart contract source code, ABI, creation info, and verification
+  - name: Transactions
+    description: Transaction execution status, receipts, and internal transactions
+  - name: Blocks
+    description: Block rewards, countdowns, and block-to-timestamp lookups
+  - name: Tokens
+    description: ERC-20 and ERC-721 token balances, supply, and holder lists
+  - name: Stats
+    description: OP Mainnet network statistics, OP token supply, and gas oracle
+  - name: Geth Proxy
+    description: Ethereum JSON-RPC proxy for direct node-level queries
+paths:
+  /:
+    get:
+      summary: Call an API module action
+      description: >-
+        All Optimism Etherscan API calls are issued against this endpoint. The
+        `module` and `action` query parameters select the operation; additional
+        parameters depend on the module/action pair. For V2 unified access, also
+        pass `chainid=10`.
+      operationId: callApi
+      tags:
+        - Accounts
+        - Contracts
+        - Transactions
+        - Blocks
+        - Tokens
+        - Stats
+        - Geth Proxy
+      parameters:
+        - name: module
+          in: query
+          required: true
+          description: >-
+            API module name. One of: account, contract, transaction, block,
+            logs, token, stats, proxy.
+          schema:
+            type: string
+            enum:
+              - account
+              - contract
+              - transaction
+              - block
+              - logs
+              - token
+              - stats
+              - proxy
+            example: account
+        - name: action
+          in: query
+          required: true
+          description: >-
+            Action to perform within the selected module. Examples: balance,
+            txlist, tokentx, getabi, getsourcecode, getstatus, getblockreward,
+            tokensupply, ethsupply, gasoracle, eth_blockNumber.
+          schema:
+            type: string
+            example: balance
+        - name: chainid
+          in: query
+          required: false
+          description: >-
+            Chain ID for Etherscan V2 unified endpoint. Use 10 for OP Mainnet.
+            Not needed when using the legacy api-optimistic.etherscan.io endpoint.
+          schema:
+            type: integer
+            example: 10
+        - name: address
+          in: query
+          required: false
+          description: OP Mainnet address for account or token operations (0x-prefixed).
+          schema:
+            type: string
+            example: "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+        - name: contractaddress
+          in: query
+          required: false
+          description: Smart contract address for token or contract operations (0x-prefixed).
+          schema:
+            type: string
+            example: "0x4200000000000000000000000000000000000042"
+        - name: txhash
+          in: query
+          required: false
+          description: Transaction hash for transaction-level queries.
+          schema:
+            type: string
+            example: "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+        - name: blockno
+          in: query
+          required: false
+          description: Block number for block-level queries.
+          schema:
+            type: integer
+            example: 12345678
+        - name: startblock
+          in: query
+          required: false
+          description: Start block for range queries (inclusive).
+          schema:
+            type: integer
+            example: 0
+        - name: endblock
+          in: query
+          required: false
+          description: End block for range queries (inclusive). Use 99999999 for latest.
+          schema:
+            type: integer
+            example: 99999999
+        - name: page
+          in: query
+          required: false
+          description: Page number for paginated results (default 1).
+          schema:
+            type: integer
+            example: 1
+        - name: offset
+          in: query
+          required: false
+          description: Number of results per page (max 10000).
+          schema:
+            type: integer
+            example: 25
+        - name: sort
+          in: query
+          required: false
+          description: Sort direction for list results.
+          schema:
+            type: string
+            enum: [asc, desc]
+            example: asc
+        - name: tag
+          in: query
+          required: false
+          description: >-
+            Block tag for proxy/stats calls. One of: latest, earliest, pending,
+            or a hex block number.
+          schema:
+            type: string
+            example: latest
+        - name: boolean
+          in: query
+          required: false
+          description: >-
+            Used with module=account&action=balance for multi-address balance
+            queries. Set to true to enable.
+          schema:
+            type: string
+            enum: ["true", "false"]
+        - name: apikey
+          in: query
+          required: false
+          description: >-
+            Etherscan API key. Required for most endpoints; obtain at
+            https://optimistic.etherscan.io/myapikey. Can also be passed via
+            the apiKeyAuth security scheme.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful API response. The `result` field type varies by module/action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+              examples:
+                accountBalance:
+                  summary: Account balance response
+                  value:
+                    status: "1"
+                    message: "OK"
+                    result: "9999823230622199960"
+                txList:
+                  summary: Transaction list response
+                  value:
+                    status: "1"
+                    message: "OK"
+                    result:
+                      - blockNumber: "12345678"
+                        timeStamp: "1640000000"
+                        hash: "0xabc123..."
+                        from: "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+                        to: "0x4200000000000000000000000000000000000042"
+                        value: "1000000000000000000"
+                        gas: "21000"
+                        gasPrice: "1000000"
+                        isError: "0"
+                        confirmations: "100"
+                error:
+                  summary: Error response
+                  value:
+                    status: "0"
+                    message: "NOTOK"
+                    result: "Error! Invalid address format"
+        "400":
+          description: Bad request — invalid parameters.
+        "401":
+          description: Unauthorized — missing or invalid API key.
+        "429":
+          description: Rate limit exceeded. Free tier allows 3 calls/second and 100,000 calls/day.
+        "500":
+          description: Internal server error.
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+      description: >-
+        Etherscan API key obtained from https://optimistic.etherscan.io/myapikey.
+        The free tier supports select chains with 3 req/s and 100k req/day. Paid
+        plans start at $49/month for full multichain access.
+  schemas:
+    ApiResponse:
+      type: object
+      description: Standard Optimism Etherscan API envelope returned by all module actions.
+      properties:
+        status:
+          type: string
+          description: '"1" indicates success; "0" indicates an error.'
+          enum: ["0", "1"]
+          example: "1"
+        message:
+          type: string
+          description: Human-readable status message. "OK" on success, "NOTOK" or error detail on failure.
+          example: OK
+        result:
+          description: >-
+            Module-specific response payload. May be a string (e.g. balance),
+            an object, or an array of objects (e.g. transaction list).
+          oneOf:
+            - type: string
+            - type: object
+            - type: array
+              items: {}
+    Transaction:
+      type: object
+      description: A transaction record returned by module=account&action=txlist.
+      properties:
+        blockNumber:
+          type: string
+          example: "12345678"
+        timeStamp:
+          type: string
+          description: Unix timestamp of the block containing this transaction.
+          example: "1640000000"
+        hash:
+          type: string
+          description: Transaction hash (32-byte hex).
+          example: "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+        nonce:
+          type: string
+          example: "42"
+        blockHash:
+          type: string
+          example: "0xabc123..."
+        transactionIndex:
+          type: string
+          example: "0"
+        from:
+          type: string
+          example: "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+        to:
+          type: string
+          example: "0x4200000000000000000000000000000000000042"
+        value:
+          type: string
+          description: Value transferred in wei.
+          example: "1000000000000000000"
+        gas:
+          type: string
+          example: "21000"
+        gasPrice:
+          type: string
+          description: Gas price in wei. On OP Mainnet this is the L2 gas price.
+          example: "1000000"
+        isError:
+          type: string
+          enum: ["0", "1"]
+          description: '"1" if the transaction reverted, "0" if it succeeded.'
+          example: "0"
+        txreceipt_status:
+          type: string
+          enum: ["", "0", "1"]
+          example: "1"
+        input:
+          type: string
+          description: Hex-encoded transaction input data.
+          example: "0x"
+        contractAddress:
+          type: string
+          description: Contract address created by this transaction, if any.
+          example: ""
+        cumulativeGasUsed:
+          type: string
+          example: "21000"
+        gasUsed:
+          type: string
+          example: "21000"
+        confirmations:
+          type: string
+          example: "100"
+        methodId:
+          type: string
+          example: "0x"
+        functionName:
+          type: string
+          example: ""
+    TokenTransfer:
+      type: object
+      description: An ERC-20 token transfer event returned by module=account&action=tokentx.
+      properties:
+        blockNumber:
+          type: string
+          example: "12345678"
+        timeStamp:
+          type: string
+          example: "1640000000"
+        hash:
+          type: string
+          example: "0xabc123..."
+        from:
+          type: string
+          example: "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+        to:
+          type: string
+          example: "0x1234567890abcdef1234567890abcdef12345678"
+        value:
+          type: string
+          description: Token amount transferred (in smallest unit, per token decimals).
+          example: "1000000000000000000"
+        tokenName:
+          type: string
+          example: "Optimism"
+        tokenSymbol:
+          type: string
+          example: "OP"
+        tokenDecimal:
+          type: string
+          example: "18"
+        contractAddress:
+          type: string
+          example: "0x4200000000000000000000000000000000000042"
+        gasUsed:
+          type: string
+          example: "52000"
+        confirmations:
+          type: string
+          example: "50"
+    ContractAbi:
+      type: object
+      description: Contract ABI returned by module=contract&action=getabi.
+      properties:
+        status:
+          type: string
+          example: "1"
+        message:
+          type: string
+          example: "OK"
+        result:
+          type: string
+          description: JSON-encoded ABI array string.
+          example: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}]"
+    BlockReward:
+      type: object
+      description: Block reward information returned by module=block&action=getblockreward.
+      properties:
+        blockNumber:
+          type: string
+          example: "12345678"
+        timeStamp:
+          type: string
+          example: "1640000000"
+        blockMiner:
+          type: string
+          example: "0x4200000000000000000000000000000000000011"
+        blockReward:
+          type: string
+          description: Block reward in wei.
+          example: "0"
+        uncles:
+          type: array
+          items: {}
+          description: Uncle blocks (empty on OP Mainnet).
+        uncleInclusionReward:
+          type: string
+          example: "0"
+    GasOracle:
+      type: object
+      description: Gas price oracle response from module=gastracker&action=gasoracle.
+      properties:
+        LastBlock:
+          type: string
+          example: "12345678"
+        SafeGasPrice:
+          type: string
+          description: Safe low gas price in Gwei.
+          example: "0.001"
+        ProposeGasPrice:
+          type: string
+          description: Proposed standard gas price in Gwei.
+          example: "0.001"
+        FastGasPrice:
+          type: string
+          description: Fast gas price in Gwei.
+          example: "0.001"
+        suggestBaseFee:
+          type: string
+          description: Suggested base fee in Gwei (EIP-1559).
+          example: "0.000999814"
+        gasUsedRatio:
+          type: string
+          description: Comma-separated gas utilization ratios for recent blocks.
+          example: "0.9978,0.4532,0.7123"
