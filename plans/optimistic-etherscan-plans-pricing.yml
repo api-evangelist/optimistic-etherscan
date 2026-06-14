@@ -1,0 +1,293 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Optimism Etherscan
+providerId: optimistic-etherscan
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - Blockchain
+  - Optimism
+  - Layer 2
+  - Ethereum
+  - EVM
+  - Web3
+description: >-
+  Pricing plans for the Optimism Etherscan API, which has migrated to Etherscan API V2. A single API
+  key provides access to Optimism (chainid=10) and 60+ other EVM chains. Plans range from a free tier
+  with limited chain coverage to Enterprise with dedicated infrastructure.
+plans:
+  - id: optimistic-etherscan-free
+    name: Free
+    type: freemium
+    description: >-
+      Free entry tier with 90% multichain coverage (Optimism may require a paid plan for full access).
+      3 calls/second, up to 100,000 API calls/day. Attribution required — apps must be noted as
+      "Powered by Optimism Etherscan APIs". No PRO endpoints included.
+    entries:
+      - label: API Calls Per Day
+        description: Maximum API calls per day on the free tier
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: 100000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per second on the free tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: 3
+        timeFrame: second
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support
+      - name: 90% Multichain Coverage
+      - name: Optimism Etherscan API
+  - id: optimistic-etherscan-lite
+    name: Lite
+    type: paid
+    description: >-
+      Entry paid tier providing full multichain access including Optimism at 5 calls/second and up to
+      100,000 API calls/day. Priced at 25% of the previous Standard tier. No PRO endpoints.
+    entries:
+      - label: API Calls Per Day
+        description: Maximum API calls per day on the Lite tier
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: 100000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '49.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per second on the Lite tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Supported Chains
+      - name: Community Support
+      - name: Optimism Etherscan API
+  - id: optimistic-etherscan-standard
+    name: Standard
+    type: paid
+    description: >-
+      Standard paid tier with 10 calls/second and up to 200,000 API calls/day. Includes access to
+      PRO endpoints for enhanced historical and analytical data on Optimism and all supported chains.
+    entries:
+      - label: API Calls Per Day
+        description: Maximum API calls per day on the Standard tier
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: 200000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '199.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per second on the Standard tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: 10
+        timeFrame: second
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Supported Chains
+      - name: API PRO Endpoints
+      - name: Escalated Support
+      - name: Optimism Etherscan API
+  - id: optimistic-etherscan-advanced
+    name: Advanced
+    type: paid
+    description: >-
+      Advanced paid tier with 20 calls/second and up to 500,000 API calls/day. Includes PRO endpoints
+      and escalated support for production Optimism integrations.
+    entries:
+      - label: API Calls Per Day
+        description: Maximum API calls per day on the Advanced tier
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: 500000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '299.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per second on the Advanced tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: 20
+        timeFrame: second
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Supported Chains
+      - name: API PRO Endpoints
+      - name: Escalated Support
+      - name: Optimism Etherscan API
+  - id: optimistic-etherscan-professional
+    name: Professional
+    type: paid
+    description: >-
+      Professional tier with 30 calls/second and up to 1,000,000 API calls/day. Full PRO access
+      and escalated support for high-volume Optimism production workloads.
+    entries:
+      - label: API Calls Per Day
+        description: Maximum API calls per day on the Professional tier
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: 1000000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '399.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per second on the Professional tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: 30
+        timeFrame: second
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Supported Chains
+      - name: API PRO Endpoints
+      - name: Escalated Support
+      - name: Optimism Etherscan API
+  - id: optimistic-etherscan-pro-plus
+    name: Pro Plus
+    type: paid
+    description: >-
+      Pro Plus tier with 30 calls/second and up to 1,500,000 API calls/day. Includes Address Metadata
+      endpoint in addition to all standard PRO features.
+    entries:
+      - label: API Calls Per Day
+        description: Maximum API calls per day on the Pro Plus tier
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: 1500000
+        timeFrame: day
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '899.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per second on the Pro Plus tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: 30
+        timeFrame: second
+        geo: global
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Supported Chains
+      - name: API PRO Endpoints
+      - name: Address Metadata Endpoint
+      - name: Escalated Support
+      - name: Optimism Etherscan API
+  - id: optimistic-etherscan-enterprise
+    name: Enterprise
+    type: enterprise
+    description: >-
+      Custom-negotiated enterprise tier with unmetered limits, dedicated infrastructure, SLA backing,
+      and dedicated support for large-scale Optimism blockchain data consumers.
+    entries:
+      - label: API Calls Per Day
+        description: Negotiated request volume; -1 indicates uncapped subject to fair use
+        name: api_calls_per_day
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: day
+        geo: configurable
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Rate Limit
+        description: Negotiated burst and steady-state rate
+        name: rate_limit
+        type: rate
+        metric: requests_per_second
+        limit: -1
+        timeFrame: second
+        geo: configurable
+        domains:
+          - https://api-optimistic.etherscan.io/api
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Unlimited / Negotiated Volume
+      - name: Dedicated Infrastructure
+      - name: Contractual SLA
+      - name: 24/7 Dedicated Support
+      - name: Security & Compliance Review
+      - name: Dedicated Account Manager
+      - name: API PRO Endpoints
+      - name: Optimism Etherscan API
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

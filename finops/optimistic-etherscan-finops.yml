@@ -1,0 +1,144 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Optimism Etherscan
+providerId: optimistic-etherscan
+publisherName: Etherscan
+serviceCategory: API
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - Blockchain
+  - Optimism
+  - Layer 2
+  - Ethereum
+  - EVM
+  - Web3
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  FinOps framework definition for the Optimism Etherscan API surface. Provides a FOCUS-aligned
+  mapping for cost allocation, usage measurement, and unit-economics reporting across the Optimism
+  (OP Mainnet) blockchain data API. API billing is unified under Etherscan API V2 plans and
+  measured per API call against the shared daily quota.
+principles:
+  - name: Visibility
+    description: Make Optimism Etherscan API consumption costs visible to engineering, product, and
+      finance teams tracking blockchain data spend in near real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application,
+      chain (chainid=10), and feature so cost can be allocated accurately.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching of block/transaction data, batching
+      of address lookups, and tier selection to reduce cost per useful unit of Optimism data fetched.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each team consuming
+      Optimism on-chain data via the API.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Optimism Etherscan API
+  ServiceCategory: Developer Tools / API
+  ProviderName: Etherscan
+  PublisherName: Etherscan
+  InvoiceIssuerName: Etherscan
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests to the Optimism Etherscan API (chainid=10)
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - module
+      - action
+      - tier
+      - chain
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in Optimism Etherscan API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - module
+      - consumer
+  - name: daily_quota_utilization
+    description: Percentage of daily call quota consumed; triggers alerts when approaching limits
+    unit: percent
+    aggregation: max
+    dimensions:
+      - api-key
+      - tier
+      - day
+apis:
+  - name: Optimism Etherscan API
+    baseURL: https://api-optimistic.etherscan.io/api
+    tags:
+      - Blockchain
+      - Optimism
+      - Layer 2
+      - Ethereum
+      - EVM
+    serviceName: Optimism Etherscan API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Optimism API Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+  - name: Cost per Transaction Lookup
+    metric: billed_cost / transaction_lookups
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

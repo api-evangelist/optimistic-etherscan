@@ -1,0 +1,164 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Optimism Etherscan
+providerId: optimistic-etherscan
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - Blockchain
+  - Optimism
+  - Layer 2
+  - Ethereum
+  - EVM
+  - Web3
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: >-
+  Rate limit definitions for the Optimism Etherscan API (OP Mainnet, chainid=10). Access is unified
+  through Etherscan API V2 with per-tier limits enforced per API key across all chains. The free tier
+  covers select chains at 3 calls/second; paid tiers scale from 5 to 30+ calls/second.
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+  policy: RateLimit-Policy
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: free
+    name: Free Tier Per-Second Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 3
+    burst: 5
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+  - tier: free
+    name: Free Tier Daily Quota
+    scope: api-key
+    metric: requests_per_day
+    limit: 100000
+    timeFrame: day
+    applies:
+      - Optimism Etherscan API
+  - tier: lite
+    name: Lite Tier Per-Second Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 5
+    burst: 10
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+  - tier: lite
+    name: Lite Tier Daily Quota
+    scope: api-key
+    metric: requests_per_day
+    limit: 100000
+    timeFrame: day
+    applies:
+      - Optimism Etherscan API
+  - tier: standard
+    name: Standard Tier Per-Second Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 10
+    burst: 20
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+  - tier: standard
+    name: Standard Tier Daily Quota
+    scope: api-key
+    metric: requests_per_day
+    limit: 200000
+    timeFrame: day
+    applies:
+      - Optimism Etherscan API
+  - tier: advanced
+    name: Advanced Tier Per-Second Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 20
+    burst: 40
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+  - tier: advanced
+    name: Advanced Tier Daily Quota
+    scope: api-key
+    metric: requests_per_day
+    limit: 500000
+    timeFrame: day
+    applies:
+      - Optimism Etherscan API
+  - tier: professional
+    name: Professional Tier Per-Second Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 30
+    burst: 60
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+  - tier: professional
+    name: Professional Tier Daily Quota
+    scope: api-key
+    metric: requests_per_day
+    limit: 1000000
+    timeFrame: day
+    applies:
+      - Optimism Etherscan API
+  - tier: pro-plus
+    name: Pro Plus Tier Per-Second Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 30
+    burst: 60
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+  - tier: pro-plus
+    name: Pro Plus Tier Daily Quota
+    scope: api-key
+    metric: requests_per_day
+    limit: 1500000
+    timeFrame: day
+    applies:
+      - Optimism Etherscan API
+  - tier: enterprise
+    name: Enterprise Negotiated Limit
+    scope: contract
+    metric: requests_per_second
+    limit: -1
+    burst: -1
+    timeFrame: second
+    applies:
+      - Optimism Etherscan API
+policies:
+  - name: Backoff Strategy
+    description: Clients should implement exponential backoff with jitter, honoring the Retry-After
+      header when present after a 429 response.
+  - name: Burst Handling
+    description: Short bursts above the steady-state limit are tolerated up to the documented burst
+      ceiling before throttling engages.
+  - name: Quota Reset
+    description: Daily quotas reset at midnight UTC. Per-second windows operate on a sliding basis.
+  - name: Shared Key Scope
+    description: Rate limits are enforced per API key across all Etherscan V2 chains. Optimism
+      (chainid=10) requests count against the same key quota as requests to other supported chains.
+  - name: Fair Use
+    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared
+      infrastructure may be subject to fair-use throttling.
+  - name: Attribution
+    description: Free tier usage requires attribution noting the application is "Powered by
+      Optimism Etherscan APIs" except for personal or private usage.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

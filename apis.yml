@@ -1,0 +1,93 @@
+aid: optimistic-etherscan
+name: Optimism Etherscan
+description: >-
+  Optimism Etherscan is the official blockchain explorer and API platform for the Optimism L2 network
+  (OP Mainnet, chain ID 10). It provides REST APIs for querying Optimism transactions, token events,
+  smart contract source code, account balances, block data, and OP Mainnet statistics. API subscriptions
+  have migrated to Etherscan API V2, enabling a single API key to access Optimism alongside 60+ EVM
+  chains. The free tier covers select chains with 3 calls/second and 100,000 calls/day; paid plans
+  start at $49/month for full multichain access.
+url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/apis.yml
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+type: Index
+position: Consumer
+access: 3rd-Party
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Blockchain
+  - Optimism
+  - Layer 2
+  - Ethereum
+  - EVM
+  - Web3
+  - Cryptocurrency
+apis:
+  - aid: optimistic-etherscan:optimistic-etherscan
+    name: Optimism Etherscan API
+    description: >-
+      The Optimism Etherscan API provides developer access to OP Mainnet blockchain data via REST
+      endpoints. Modules cover accounts (balances, transaction lists, token transfers), contracts
+      (ABI, source code, verification), transactions (status, receipts, internal txs), blocks (rewards,
+      countdowns, timestamps), tokens (ERC-20/ERC-721 balances, supply, holders), stats (OP supply,
+      gas oracle, network statistics), and a Geth proxy for raw JSON-RPC calls. Use chainid=10 with
+      Etherscan API V2 for unified multichain access.
+    humanURL: https://docs.optimism.etherscan.io/
+    baseURL: https://api-optimistic.etherscan.io/api
+    tags:
+      - Blockchain
+      - Optimism
+      - Layer 2
+      - Ethereum
+      - EVM
+      - Transactions
+      - Smart Contracts
+      - Token Events
+    properties:
+      - url: https://docs.optimism.etherscan.io/
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/stats
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+        type: Documentation
+      - url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+        type: Documentation
+      - url: https://etherscan.io/apis
+        type: Pricing
+      - url: https://optimistic.etherscan.io/myapikey
+        type: SignUp
+      - url: https://etherscan.io/apiterms
+        type: TermsOfService
+      - url: https://docs.optimism.etherscan.io/support/rate-limits
+        type: RateLimits
+common:
+  - url: https://optimistic.etherscan.io/
+    type: Portal
+  - url: https://docs.optimism.etherscan.io/
+    type: Documentation
+  - url: https://etherscan.io/apis
+    type: Pricing
+  - url: https://etherscan.io/apiterms
+    type: TermsOfService
+  - url: https://optimistic.etherscan.io/myapikey
+    type: SignUp
+  - url: https://docs.optimism.etherscan.io/support/rate-limits
+    type: RateLimits
+  - url: https://docs.etherscan.io/llms.txt
+    type: LLMsTxt
+  - url: https://docs.optimism.etherscan.io/optimism-sepolia-etherscan
+    type: Sandbox
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
