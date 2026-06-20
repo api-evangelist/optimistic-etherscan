@@ -8,7 +8,7 @@ description: >-
   chains. The free tier covers select chains with 3 calls/second and 100,000 calls/day; paid plans
   start at $49/month for full multichain access.
 url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/apis.yml
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 type: Index
 position: Consumer
 access: 3rd-Party
