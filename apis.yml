@@ -66,7 +66,7 @@ apis:
       - url: https://etherscan.io/apis
         type: Pricing
       - url: https://optimistic.etherscan.io/myapikey
-        type: SignUp
+        type: Signup
       - url: https://etherscan.io/apiterms
         type: TermsOfService
       - url: https://docs.optimism.etherscan.io/support/rate-limits
@@ -87,11 +87,11 @@ common:
   - url: https://etherscan.io/apiterms
     type: TermsOfService
   - url: https://optimistic.etherscan.io/myapikey
-    type: SignUp
+    type: Signup
   - url: https://docs.optimism.etherscan.io/support/rate-limits
     type: RateLimits
   - url: https://docs.etherscan.io/llms.txt
-    type: LLMsTxt
+    type: LlmsText
   - url: https://docs.optimism.etherscan.io/optimism-sepolia-etherscan
     type: Sandbox
 maintainers:
