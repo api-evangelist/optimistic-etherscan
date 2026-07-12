@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: optimistic.etherscan.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 20 03:43:38 2026 GMT
+  hsts: false
+- host: docs.optimism.etherscan.io
+  https: false
+- host: api-optimistic.etherscan.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 20 03:43:38 2026 GMT
+  hsts: false
+domains:
+- domain: etherscan.io
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

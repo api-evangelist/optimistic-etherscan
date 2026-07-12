@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/optimistic-etherscan-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: query
+  parameter: apikey
+  description: Etherscan API key obtained from https://optimistic.etherscan.io/myapikey. The
+    free tier supports select chains with 3 req/s and 100k req/day. Paid plans start at $49/month
+    for full multichain access.
+  sources:
+  - openapi/optimistic-etherscan-openapi.yml
