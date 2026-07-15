@@ -78,6 +78,8 @@ apis:
       - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
         type: JSONLDContext
 common:
+  - type: AgenticAccess
+    url: agentic-access/optimistic-etherscan-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/optimistic-etherscan-vulnerability-disclosure.yml
   - type: DomainSecurity
