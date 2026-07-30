@@ -8,7 +8,20 @@ description: >-
   chains. The free tier covers select chains with 3 calls/second and 100,000 calls/day; paid plans
   start at $49/month for full multichain access.
 url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/optimistic-etherscan.png
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -24,59 +37,300 @@ tags:
   - Web3
   - Cryptocurrency
 apis:
-  - aid: optimistic-etherscan:optimistic-etherscan
-    name: Optimism Etherscan API
-    description: >-
-      The Optimism Etherscan API provides developer access to OP Mainnet blockchain data via REST
-      endpoints. Modules cover accounts (balances, transaction lists, token transfers), contracts
-      (ABI, source code, verification), transactions (status, receipts, internal txs), blocks (rewards,
-      countdowns, timestamps), tokens (ERC-20/ERC-721 balances, supply, holders), stats (OP supply,
-      gas oracle, network statistics), and a Geth proxy for raw JSON-RPC calls. Use chainid=10 with
-      Etherscan API V2 for unified multichain access.
-    humanURL: https://docs.optimism.etherscan.io/
-    baseURL: https://api-optimistic.etherscan.io/api
-    tags:
-      - Blockchain
-      - Optimism
-      - Layer 2
-      - Ethereum
-      - EVM
-      - Transactions
-      - Smart Contracts
-      - Token Events
-    properties:
-      - url: https://docs.optimism.etherscan.io/
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/accounts
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/contracts
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/stats
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/tokens
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/blocks
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
-        type: Documentation
-      - url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
-        type: Documentation
-      - url: https://etherscan.io/apis
-        type: Pricing
-      - url: https://optimistic.etherscan.io/myapikey
-        type: Signup
-      - url: https://etherscan.io/apiterms
-        type: TermsOfService
-      - url: https://docs.optimism.etherscan.io/support/rate-limits
-        type: RateLimits
-      - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/openapi/optimistic-etherscan-openapi.yml
-        type: OpenAPI
-      - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
-        type: Vocabulary
-      - url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
-        type: JSONLDContext
+- aid: optimistic-etherscan:optimistic-etherscan-accounts-api
+  name: Optimism Etherscan Accounts API
+  description: Address balances, transaction lists, and token holdings on OP Mainnet
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+- aid: optimistic-etherscan:optimistic-etherscan-blocks-api
+  name: Optimism Etherscan Blocks API
+  description: Block rewards, countdowns, and block-to-timestamp lookups
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+- aid: optimistic-etherscan:optimistic-etherscan-contracts-api
+  name: Optimism Etherscan Contracts API
+  description: Smart contract source code, ABI, creation info, and verification
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+- aid: optimistic-etherscan:optimistic-etherscan-geth-proxy-api
+  name: Optimism Etherscan Geth Proxy API
+  description: Ethereum JSON-RPC proxy for direct node-level queries
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Geth Proxy
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-geth-proxy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+- aid: optimistic-etherscan:optimistic-etherscan-stats-api
+  name: Optimism Etherscan Stats API
+  description: OP Mainnet network statistics, OP token supply, and gas oracle
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-stats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+- aid: optimistic-etherscan:optimistic-etherscan-tokens-api
+  name: Optimism Etherscan Tokens API
+  description: ERC-20 and ERC-721 token balances, supply, and holder lists
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
+- aid: optimistic-etherscan:optimistic-etherscan-transactions-api
+  name: Optimism Etherscan Transactions API
+  description: Transaction execution status, receipts, and internal transactions
+  humanURL: https://docs.optimism.etherscan.io/
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/optimistic-etherscan-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/accounts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/contracts
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/stats-1
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/tokens
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/blocks
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-endpoints/geth-parity-proxy
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io/api-pro/api-pro-endpoints
+  - type: Pricing
+    url: https://etherscan.io/apis
+  - type: Signup
+    url: https://optimistic.etherscan.io/myapikey
+  - type: TermsOfService
+    url: https://etherscan.io/apiterms
+  - type: RateLimits
+    url: https://docs.optimism.etherscan.io/support/rate-limits
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/vocabulary/optimistic-etherscan-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/optimistic-etherscan-agentic-access.yml
