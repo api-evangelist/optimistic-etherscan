@@ -1,0 +1,26 @@
+{
+  "provider": "optimistic-etherscan",
+  "sources": [
+    "optimistic-etherscan-accounts-api-openapi.yml",
+    "optimistic-etherscan-blocks-api-openapi.yml",
+    "optimistic-etherscan-contracts-api-openapi.yml",
+    "optimistic-etherscan-geth-proxy-api-openapi.yml",
+    "optimistic-etherscan-stats-api-openapi.yml",
+    "optimistic-etherscan-tokens-api-openapi.yml",
+    "optimistic-etherscan-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "optimistic-etherscan-accounts-api-openapi.yml",
+    "optimistic-etherscan-blocks-api-openapi.yml",
+    "optimistic-etherscan-contracts-api-openapi.yml",
+    "optimistic-etherscan-geth-proxy-api-openapi.yml",
+    "optimistic-etherscan-stats-api-openapi.yml",
+    "optimistic-etherscan-tokens-api-openapi.yml",
+    "optimistic-etherscan-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
