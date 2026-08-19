@@ -1,0 +1,651 @@
+{
+  "item": [
+    {
+      "id": "85267365-a1d1-4de9-983c-67144e498164",
+      "name": "Tokens",
+      "description": {
+        "content": "ERC-20 and ERC-721 token balances, supply, and holder lists",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "baa6f9e7-cde7-4687-9380-557bb580bed5",
+          "name": "Call an API module action",
+          "request": {
+            "name": "Call an API module action",
+            "description": {
+              "content": "All Optimism Etherscan API calls are issued against this endpoint. The `module` and `action` query parameters select the operation; additional parameters depend on the module/action pair. For V2 unified access, also pass `chainid=10`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "module",
+                  "value": "<string>",
+                  "description": "(Required) API module name. One of: account, contract, transaction, block, logs, token, stats, proxy."
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "(Required) Action to perform within the selected module. Examples: balance, txlist, tokentx, getabi, getsourcecode, getstatus, getblockreward, tokensupply, ethsupply, gasoracle, eth_blockNumber."
+                },
+                {
+                  "disabled": false,
+                  "key": "chainid",
+                  "value": "<integer>",
+                  "description": "Chain ID for Etherscan V2 unified endpoint. Use 10 for OP Mainnet. Not needed when using the legacy api-optimistic.etherscan.io endpoint."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "OP Mainnet address for account or token operations (0x-prefixed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "contractaddress",
+                  "value": "<string>",
+                  "description": "Smart contract address for token or contract operations (0x-prefixed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "txhash",
+                  "value": "<string>",
+                  "description": "Transaction hash for transaction-level queries."
+                },
+                {
+                  "disabled": false,
+                  "key": "blockno",
+                  "value": "<integer>",
+                  "description": "Block number for block-level queries."
+                },
+                {
+                  "disabled": false,
+                  "key": "startblock",
+                  "value": "<integer>",
+                  "description": "Start block for range queries (inclusive)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endblock",
+                  "value": "<integer>",
+                  "description": "End block for range queries (inclusive). Use 99999999 for latest."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for paginated results (default 1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of results per page (max 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort direction for list results."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Block tag for proxy/stats calls. One of: latest, earliest, pending, or a hex block number."
+                },
+                {
+                  "disabled": false,
+                  "key": "boolean",
+                  "value": "<string>",
+                  "description": "Used with module=account&action=balance for multi-address balance queries. Set to true to enable."
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "Etherscan API key. Required for most endpoints; obtain at https://optimistic.etherscan.io/myapikey. Can also be passed via the apiKeyAuth security scheme."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c97e3678-6ed4-435d-bad3-e4232c164804",
+              "name": "Successful API response. The `result` field type varies by module/action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "account"
+                    },
+                    {
+                      "key": "action",
+                      "value": "balance"
+                    },
+                    {
+                      "key": "chainid",
+                      "value": "10"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+                    },
+                    {
+                      "key": "contractaddress",
+                      "value": "0x4200000000000000000000000000000000000042"
+                    },
+                    {
+                      "key": "txhash",
+                      "value": "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+                    },
+                    {
+                      "key": "blockno",
+                      "value": "12345678"
+                    },
+                    {
+                      "key": "startblock",
+                      "value": "0"
+                    },
+                    {
+                      "key": "endblock",
+                      "value": "99999999"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "latest"
+                    },
+                    {
+                      "key": "boolean",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"1\",\n  \"message\": \"OK\",\n  \"result\": \"9999823230622199960\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67a296a5-3228-4351-b790-4dac311d6612",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "account"
+                    },
+                    {
+                      "key": "action",
+                      "value": "balance"
+                    },
+                    {
+                      "key": "chainid",
+                      "value": "10"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+                    },
+                    {
+                      "key": "contractaddress",
+                      "value": "0x4200000000000000000000000000000000000042"
+                    },
+                    {
+                      "key": "txhash",
+                      "value": "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+                    },
+                    {
+                      "key": "blockno",
+                      "value": "12345678"
+                    },
+                    {
+                      "key": "startblock",
+                      "value": "0"
+                    },
+                    {
+                      "key": "endblock",
+                      "value": "99999999"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "latest"
+                    },
+                    {
+                      "key": "boolean",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42c6dc62-c776-4374-89dc-c907dcc61c29",
+              "name": "Unauthorized — missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "account"
+                    },
+                    {
+                      "key": "action",
+                      "value": "balance"
+                    },
+                    {
+                      "key": "chainid",
+                      "value": "10"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+                    },
+                    {
+                      "key": "contractaddress",
+                      "value": "0x4200000000000000000000000000000000000042"
+                    },
+                    {
+                      "key": "txhash",
+                      "value": "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+                    },
+                    {
+                      "key": "blockno",
+                      "value": "12345678"
+                    },
+                    {
+                      "key": "startblock",
+                      "value": "0"
+                    },
+                    {
+                      "key": "endblock",
+                      "value": "99999999"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "latest"
+                    },
+                    {
+                      "key": "boolean",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "608bda59-564a-4c10-86f2-b2ed1d74e57b",
+              "name": "Rate limit exceeded. Free tier allows 3 calls/second and 100,000 calls/day.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "account"
+                    },
+                    {
+                      "key": "action",
+                      "value": "balance"
+                    },
+                    {
+                      "key": "chainid",
+                      "value": "10"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+                    },
+                    {
+                      "key": "contractaddress",
+                      "value": "0x4200000000000000000000000000000000000042"
+                    },
+                    {
+                      "key": "txhash",
+                      "value": "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+                    },
+                    {
+                      "key": "blockno",
+                      "value": "12345678"
+                    },
+                    {
+                      "key": "startblock",
+                      "value": "0"
+                    },
+                    {
+                      "key": "endblock",
+                      "value": "99999999"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "latest"
+                    },
+                    {
+                      "key": "boolean",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d854433-90ec-469f-97bc-9b54f0e746b0",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "account"
+                    },
+                    {
+                      "key": "action",
+                      "value": "balance"
+                    },
+                    {
+                      "key": "chainid",
+                      "value": "10"
+                    },
+                    {
+                      "key": "address",
+                      "value": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+                    },
+                    {
+                      "key": "contractaddress",
+                      "value": "0x4200000000000000000000000000000000000042"
+                    },
+                    {
+                      "key": "txhash",
+                      "value": "0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4f82b7fb7b1b59b0f9e9f35e"
+                    },
+                    {
+                      "key": "blockno",
+                      "value": "12345678"
+                    },
+                    {
+                      "key": "startblock",
+                      "value": "0"
+                    },
+                    {
+                      "key": "endblock",
+                      "value": "99999999"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "latest"
+                    },
+                    {
+                      "key": "boolean",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-optimistic.etherscan.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "da8f942d-9ff3-410d-8e2c-d14460e3b67a",
+    "name": "Optimism Etherscan Accounts Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Optimism Etherscan API provides developer access to OP Mainnet (chain ID 10) blockchain data via REST endpoints. Modules cover accounts (balances, transaction lists, token transfers), contracts (ABI, source code, verification), transactions (status, receipts, internal txs), blocks (rewards, countdowns, timestamps), tokens (ERC-20/ERC-721 balances, supply, holders), stats (OP supply, gas oracle, network statistics), and a Geth proxy for raw JSON-RPC calls. Use chainid=10 with Etherscan API V2 for unified multichain access, or the legacy endpoint at https://api-optimistic.etherscan.io/api.\n\nContact Support:\n Name: Optimism Etherscan Support",
+      "type": "text/plain"
+    }
+  }
+}

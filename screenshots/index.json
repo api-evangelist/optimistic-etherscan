@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "optimistic-etherscan",
+    "captured_at": "2026-08-17T124250",
+    "source_url": "https://optimistic.etherscan.io/",
+    "source_type": "Portal",
+    "file": "optimistic-etherscan-2026-08-17T124250.png",
+    "bytes": 192458,
+    "capture": "playwright-local"
+  }
+]

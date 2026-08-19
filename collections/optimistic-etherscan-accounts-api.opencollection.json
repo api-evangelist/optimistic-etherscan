@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Optimism Etherscan Accounts API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Call an API module action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-optimistic.etherscan.io/api/",
+            "params": [
+              {
+                "name": "module",
+                "value": "",
+                "type": "query",
+                "description": "API module name. One of: account, contract, transaction, block, logs, token, stats, proxy."
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action to perform within the selected module. Examples: balance, txlist, tokentx, getabi, getsourcecode, getstatus, getblockreward, tokensupply, ethsupply, gasoracle, eth_blockNumber."
+              },
+              {
+                "name": "chainid",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID for Etherscan V2 unified endpoint. Use 10 for OP Mainnet. Not needed when using the legacy api-optimistic.etherscan.io endpoint."
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "OP Mainnet address for account or token operations (0x-prefixed)."
+              },
+              {
+                "name": "contractaddress",
+                "value": "",
+                "type": "query",
+                "description": "Smart contract address for token or contract operations (0x-prefixed)."
+              },
+              {
+                "name": "txhash",
+                "value": "",
+                "type": "query",
+                "description": "Transaction hash for transaction-level queries."
+              },
+              {
+                "name": "blockno",
+                "value": "",
+                "type": "query",
+                "description": "Block number for block-level queries."
+              },
+              {
+                "name": "startblock",
+                "value": "",
+                "type": "query",
+                "description": "Start block for range queries (inclusive)."
+              },
+              {
+                "name": "endblock",
+                "value": "",
+                "type": "query",
+                "description": "End block for range queries (inclusive). Use 99999999 for latest."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results (default 1)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 10000)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction for list results."
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Block tag for proxy/stats calls. One of: latest, earliest, pending, or a hex block number."
+              },
+              {
+                "name": "boolean",
+                "value": "",
+                "type": "query",
+                "description": "Used with module=account&action=balance for multi-address balance queries. Set to true to enable."
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "Etherscan API key. Required for most endpoints; obtain at https://optimistic.etherscan.io/myapikey. Can also be passed via the apiKeyAuth security scheme."
+              }
+            ]
+          },
+          "docs": "All Optimism Etherscan API calls are issued against this endpoint. The `module` and `action` query parameters select the operation; additional parameters depend on the module/action pair. For V2 unified access, also pass `chainid=10`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
