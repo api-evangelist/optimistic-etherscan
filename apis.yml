@@ -43,6 +43,8 @@ apis:
   humanURL: https://docs.optimism.etherscan.io/
   baseURL: https://api-optimistic.etherscan.io/api
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -295,6 +297,8 @@ apis:
   humanURL: https://docs.optimism.etherscan.io/
   baseURL: https://api-optimistic.etherscan.io/api
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
