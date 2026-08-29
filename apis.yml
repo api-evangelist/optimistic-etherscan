@@ -8,6 +8,18 @@ description: >-
   chains. The free tier covers select chains with 3 calls/second and 100,000 calls/day; paid plans
   start at $49/month for full multichain access.
 url: https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
