@@ -1,26 +1,21 @@
 {
   "provider": "optimistic-etherscan",
   "sources": [
-    "optimistic-etherscan-accounts-api-openapi.yml",
-    "optimistic-etherscan-blocks-api-openapi.yml",
-    "optimistic-etherscan-contracts-api-openapi.yml",
-    "optimistic-etherscan-geth-proxy-api-openapi.yml",
-    "optimistic-etherscan-stats-api-openapi.yml",
-    "optimistic-etherscan-tokens-api-openapi.yml",
-    "optimistic-etherscan-transactions-api-openapi.yml"
+    "_original/optimistic-etherscan-openapi.yml"
   ],
   "outputs": [
-    "optimistic-etherscan-accounts-api-openapi.yml",
-    "optimistic-etherscan-blocks-api-openapi.yml",
-    "optimistic-etherscan-contracts-api-openapi.yml",
-    "optimistic-etherscan-geth-proxy-api-openapi.yml",
-    "optimistic-etherscan-stats-api-openapi.yml",
-    "optimistic-etherscan-tokens-api-openapi.yml",
-    "optimistic-etherscan-transactions-api-openapi.yml"
+    "optimistic-etherscan-accounts-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "optimistic-etherscan-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "optimistic-etherscan-openapi.yml: multi-axis tagging (7 tags, 1 first tags, 7.00x duplication over 1 operations) \u2014 split on first tag, 1 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "optimistic-etherscan-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

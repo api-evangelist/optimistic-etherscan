@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Optimism Etherscan Accounts API
-  description: The Optimism Etherscan API provides developer access to OP Mainnet (chain ID 10) blockchain data via REST endpoints. Modules cover accounts (balances, transaction lists, token transfers), contracts (ABI, source code, verification), transactions (status, receipts, internal txs), blocks (rewards, countdowns, timestamps), tokens (ERC-20/ERC-721 balances, supply, holders), stats (OP supply, gas oracle, network statistics), and a Geth proxy for raw JSON-RPC calls. Use chainid=10 with Etherscan API V2 for unified multichain access, or the legacy endpoint at https://api-optimistic.etherscan.io/api.
+  description: The Optimism Etherscan API provides developer access to OP Mainnet (chain ID 10) blockchain data via REST endpoints.
   version: '2.0'
   contact:
     name: Optimism Etherscan Support
