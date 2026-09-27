@@ -95,7 +95,7 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
 common:
   - type: Website
-    url: https://www.etherscan.io/
+    url: https://optimistic.etherscan.io/
   - type: AgenticAccess
     url: agentic-access/optimistic-etherscan-agentic-access.yml
   - type: VulnerabilityDisclosure
@@ -123,3 +123,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: etherscan
+x-relationship: product
