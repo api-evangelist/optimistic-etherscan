@@ -94,6 +94,10 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/optimistic-etherscan/refs/heads/main/json-ld/optimistic-etherscan-context.jsonld
 common:
+  - type: Plans
+    url: plans/optimistic-etherscan-plans-pricing.yml
+  - type: FinOps
+    url: finops/optimistic-etherscan-finops.yml
   - type: Website
     url: https://optimistic.etherscan.io/
   - type: AgenticAccess
